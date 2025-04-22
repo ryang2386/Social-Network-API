@@ -14,14 +14,11 @@ export const getUsers = async (req: Request, res: Response) => {
 // get a single user by id
 export const getUserById = async (req: Request, res: Response) => {
     try {
-        const user = await User.findById(req.params.userId).populate('friends', 'username');
+        const user = await User.findById(req.params.userId).populate('thoughts').populate('friends', 'username');
         console.log(user);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        // const friends = await user.populate('friends');
-        // console.log(user.populate('thoughts'));
-        // console.log(friends);
         res.json(user);
         return;
     } catch (error) {
