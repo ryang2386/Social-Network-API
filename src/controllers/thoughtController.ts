@@ -31,11 +31,12 @@ export const createThought = async (req: Request, res: Response) => {
     try {
         const newThought = await Thought.create(req.body);
         // want to add the thought to the user's thoughts array
-        const user = await User.findOneAndUpdate(
-            { _id: req.body.userId },
+        const user = await User.findByIdAndUpdate(
+            req.body.userId,
             { $addToSet: { thoughts: newThought._id } },
             { new: true }
         );
+        console.log(user);
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });

@@ -43,7 +43,8 @@ const createThought = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const newThought = yield index_js_1.Thought.create(req.body);
         // want to add the thought to the user's thoughts array
-        const user = yield index_js_1.User.findOneAndUpdate({ _id: req.body.userId }, { $addToSet: { thoughts: newThought._id } }, { new: true });
+        const user = yield index_js_1.User.findByIdAndUpdate(req.body.userId, { $addToSet: { thoughts: newThought._id } }, { new: true });
+        console.log(user);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
