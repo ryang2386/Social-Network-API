@@ -25,11 +25,11 @@ exports.getUsers = getUsers;
 // get a single user by id
 const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield index_js_1.User.findById(req.params.userId).populate('thoughts').populate('friends', 'username');
-        console.log(user);
+        const user = yield index_js_1.User.findById(req.params.userId).populate('thoughts', 'thoughtText createdAt reactions').populate('friends', 'username');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
+        console.log(user);
         res.json(user);
         return;
     }
