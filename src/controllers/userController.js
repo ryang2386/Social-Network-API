@@ -29,7 +29,6 @@ const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        console.log(user);
         res.json(user);
         return;
     }
@@ -92,7 +91,7 @@ exports.removeUser = removeUser;
 // add a friend to a user's friends list
 const addFriend = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield index_js_1.User.findOneAndUpdate({ _id: req.params.userId }, { $addToSet: { friends: req.params.friendId } }, { runValidators: true, new: true }).populate('Friends');
+        const user = yield index_js_1.User.findOneAndUpdate({ _id: req.params.userId }, { $addToSet: { friends: req.params.friendId } }, { runValidators: true, new: true }).populate('friends', 'username');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -109,7 +108,7 @@ exports.addFriend = addFriend;
 // remove a friend from a user's friends list by id
 const removeFriend = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield index_js_1.User.findOneAndUpdate({ _id: req.params.userId }, { $pull: { friends: req.params.friendId } }, { runValidators: true, new: true }).populate('Friends');
+        const user = yield index_js_1.User.findOneAndUpdate({ _id: req.params.userId }, { $pull: { friends: req.params.friendId } }, { runValidators: true, new: true }).populate('friends', 'username');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }

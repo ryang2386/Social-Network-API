@@ -18,7 +18,6 @@ export const getUserById = async (req: Request, res: Response) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        console.log(user);
         res.json(user);
         return;
     } catch (error) {
@@ -95,7 +94,7 @@ export const addFriend = async (req: Request, res: Response) => {
             { _id: req.params.userId },
             { $addToSet: { friends: req.params.friendId } },
             { runValidators: true, new: true }
-        ).populate('Friends');
+        ).populate('friends', 'username');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -115,7 +114,7 @@ export const removeFriend = async (req: Request, res: Response) => {
             { _id: req.params.userId },
             { $pull: { friends: req.params.friendId } },
             { runValidators: true, new: true }
-        ).populate('Friends');
+        ).populate('friends', 'username');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
