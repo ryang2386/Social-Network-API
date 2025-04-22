@@ -36,7 +36,6 @@ export const createThought = async (req: Request, res: Response) => {
             { $addToSet: { thoughts: newThought._id } },
             { new: true }
         );
-        console.log(user);
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -124,7 +123,7 @@ export const removeReaction = async (req: Request, res: Response) => {
     try {
         const thought = await Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: { reactionId: req.params.reactionId } } },
+            { $pull: { reactions: { reactionId: req.body.reactionId } } },
             { runValidators: true, new: true }
         );
         if (!thought) {

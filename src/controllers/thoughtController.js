@@ -44,7 +44,6 @@ const createThought = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const newThought = yield index_js_1.Thought.create(req.body);
         // want to add the thought to the user's thoughts array
         const user = yield index_js_1.User.findByIdAndUpdate(req.body.userId, { $addToSet: { thoughts: newThought._id } }, { new: true });
-        console.log(user);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -117,7 +116,7 @@ exports.createReaction = createReaction;
 // remove a reaction from a thought by id
 const removeReaction = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const thought = yield index_js_1.Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { reactionId: req.params.reactionId } } }, { runValidators: true, new: true });
+        const thought = yield index_js_1.Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $pull: { reactions: { reactionId: req.body.reactionId } } }, { runValidators: true, new: true });
         if (!thought) {
             return res.status(404).json({ message: 'Thought not found' });
         }
