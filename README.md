@@ -36,7 +36,8 @@ https://github.com/user-attachments/assets/155b48f0-4dce-4e3e-b5d8-418ca425c34f
 
 GIF taken after improvements were made to show more data under 'friends'
 
-![Screen Recording 2025-04-23 183331](https://github.com/user-attachments/assets/e113bd04-afb1-4099-b61a-5776769dd2da)
+![ezgif-76bae2289c4d5d](https://github.com/user-attachments/assets/a76e7671-0051-4b5f-b2f6-74d19a95a153)
+
 
 ## Contribution
 First, I'd like to thank Columbia University Coding Bootcamp for providing me with examples of the code needed to complete this API. I used the example code as a reference to complete the code necessary to make it work. Additionally, anyone is free to fork the repo and create a pull request if you'd like to make additions to the code to add useful features to enhance the app. Also, please give this app a star! I would truly appreciate it!
