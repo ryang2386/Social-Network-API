@@ -14,7 +14,7 @@ export const getUsers = async (req: Request, res: Response) => {
 // get a single user by id
 export const getUserById = async (req: Request, res: Response) => {
     try {
-        const user = await User.findById(req.params.userId).populate('thoughts', 'thoughtText createdAt reactions').populate('friends', 'username');
+        const user = await User.findById(req.params.userId).populate('thoughts', 'thoughtText createdAt reactions').populate('friends', 'username email thoughts friends friendCount');
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
