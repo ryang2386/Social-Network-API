@@ -35,6 +35,7 @@ https://github.com/user-attachments/assets/155b48f0-4dce-4e3e-b5d8-418ca425c34f
 
 
 GIF taken after improvements were made to show more data under 'friends'
+
 ![Screen Recording 2025-04-23 183331](https://github.com/user-attachments/assets/e113bd04-afb1-4099-b61a-5776769dd2da)
 
 ## Contribution
